@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="contact">
+      <h1>Contact ME!</h1>
+      <h3>Email:</h3>
+      <p>johndoe@gmail.com</p>
+
+      <h3>Phone:</h3>
+      <p>+1 (123) 456-7890</p>
+
+      <h3>Address:</h3>
+      <p>123 Main St, Anytown, USA</p>
+      <br/><br/>
+
+      <form name="thisForm">
+        <table>
+
+          <tr>
+            <th colspan="2">Use This Form to Contact Me</th>
+          </tr>
+
+          <tr>
+            <td>Full Name:</td>
+            <td><input type="text" size="40" name="fullname" required></td>
+          </tr>
+
+          <tr>
+            <td>Email:</td>
+            <td><input type="text" size="40" name="email" required></td>
+          </tr>
+
+          <tr>
+            <td>Subject:</td>
+            <td><input type="text" size="40" name="subject" required></td>
+          </tr>
+
+          <tr>
+            <td>Priority:</td>
+            <td>
+              <select name="priority">
+                <option value="none">Choose a priority</option>
+                <option value="urgent">Urgent</option>
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+                <option value="spam">Spam</option>
+              </select>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Message:</td>
+            <td><textarea name="message" rows="5" cols="40" required></textarea></td>
+          </tr>
+
+          <tr>
+            <td type="reset" value="Clear Form"></td>
+            <td><input type="button" value="Send Message" onclick="processForm()"></td>
+          </tr>
+
+          <tr>
+            <td><br/><br/></td>
+          </tr>
+
+          <tr>
+            <th colspan="2">Message after inspection:</th>
+          </tr>
+
+          <tr>
+            <td valign="top">Message Sent:</td>
+            <td>
+              <textarea name="sentMessage" rows="12" cols="40" readonly></textarea>
+            </td>
+          </tr>
+
+        </table>
+      </form>
+
+    </div>
+  </body>
+
+  <script>
+    function processForm() {
+      var e = document.thisForm.fullname.value + "\n" + document.thisForm.email.value
+      e = e + "\n\n" + document.thisForm.subject.value + "\n"
+
+      var p = ""
+      switch (document.thisForm.priority.value) {
+        case "none":
+          p = "No Priority selected"
+          break;
+        case "urgent":
+          p = "URGENT: Must be serious!"
+          break;
+        case "low":
+          p = "Not really important."
+          break;
+        case "medium":
+          p = "Kind of important."
+          break;
+        case "high":
+          p = "Pretty darn IMPORTAT!"
+          break;
+        case "spam":
+          p = "Once you've read all your spam"
+          break;
+      }
+      e = e + "Priority: " + p + "\n\n" + document.thisForm.message.value
+
+      document.thisForm.sentMessage.value = e
+    }
+  </script>
+</html>
